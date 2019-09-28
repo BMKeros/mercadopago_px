@@ -1,0 +1,21 @@
+name: mercadopago_px
+description: MercadoPago - Android Payment Experience for Flutter.
+version: 1.0.0
+author: Israel Lugo <hostelixisrael@gmail.com>
+homepage: https://github.com/bmkeros/mercadopago_px
+
+environment:
+  sdk: ">=2.1.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  plugin:
+    androidPackage: com.bmkeros.mercadopagopx
+    pluginClass: MercadoPagoPxPlugin
