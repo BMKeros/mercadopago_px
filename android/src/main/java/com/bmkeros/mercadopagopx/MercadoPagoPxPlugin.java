@@ -4,6 +4,7 @@ import android.content.Intent;
 
 import com.google.gson.Gson;
 import com.mercadopago.android.px.core.MercadoPagoCheckout;
+import com.mercadopago.android.px.model.Card;
 import com.mercadopago.android.px.model.Payment;
 import com.mercadopago.android.px.model.exceptions.MercadoPagoError;
 
@@ -102,8 +103,27 @@ public class MercadoPagoPxPlugin implements MethodCallHandler, PluginRegistry.Ac
         map.put("paymentMethodId", payment.getPaymentMethodId());
         map.put("paymentTypeId", payment.getPaymentTypeId());
         map.put("description", payment.getDescription());
-        map.put("card", gson.toJson(payment.getCard()));
+        map.put("card", cardToMap(payment.getCard()));
         map.put("payer", gson.toJson(payment.getPayer()));
+
+        return map;
+    }
+
+    private Map<String, Object> cardToMap(Card card) {
+        final HashMap<String, Object> map = new HashMap<>();
+
+        map.put("cardHolder", card.getCardHolder());
+        map.put("customerId", card.getCustomerId());
+        map.put("dateCreated", card.getDateCreated());
+        map.put("dateLastUpdated", card.getDateLastUpdated());
+        map.put("expirationMonth", card.getExpirationMonth());
+        map.put("expirationYear", card.getExpirationYear());
+        map.put("firstSixDigits", card.getFirstSixDigits());
+        map.put("id", card.getId());
+        map.put("issuer", card.getIssuer());
+        map.put("lastFourDigits", card.getLastFourDigits());
+        map.put("paymentMethod", card.getPaymentMethod());
+        map.put("securityCode", card.getSecurityCode());
 
         return map;
     }
